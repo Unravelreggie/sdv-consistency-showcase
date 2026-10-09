@@ -1,0 +1,11 @@
+import test from "node:test";
+import assert from "node:assert/strict";
+import {evaluate,scenarios} from "./logic.mjs";
+test("traceable same-participant chat evidence is consistent",()=>assert.equal(evaluate(scenarios[0]).status,"consistent"));
+test("positive system duration does not require a phone screenshot",()=>assert.equal(evaluate(scenarios[1]).manualReview,false));
+test("zero or invalid duration cannot establish a call",()=>{for(const duration of [0,-1,NaN,Infinity])assert.equal(evaluate({...scenarios[1],duration}).manualReview,true)});
+test("guardian label cannot validate the participant identity",()=>assert.deepEqual(evaluate(scenarios[3]).reasons,["identity_unconfirmed"]));
+test("uncovered consent is informational rather than automatic failure",()=>{const r=evaluate(scenarios[4]);assert.equal(r.status,"consistent");assert.ok(r.notes.includes("consent_not_covered"))});
+test("candidate missing from source text requires review",()=>assert.equal(evaluate(scenarios[5]).manualReview,true));
+test("chat reply without enquiry does not form the toy chain",()=>assert.ok(evaluate({...scenarios[0],enquiry:false}).reasons.includes("chat_chain_incomplete")));
+test("wrong participant or unknown modality stays reviewable",()=>{assert.equal(evaluate({...scenarios[0],expected:"SYN-PERSON-Z"}).manualReview,true);assert.equal(evaluate({...scenarios[0],mode:"unknown"}).manualReview,true)});

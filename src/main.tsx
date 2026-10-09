@@ -1,0 +1,11 @@
+import React, { useState } from "react";
+import { createRoot } from "react-dom/client";
+import Demo from "./Demo";
+import "./styles.css";
+function App(){
+ const [language,setLanguage]=useState<"en"|"zh">("en");
+ const zh=language==="zh";
+ React.useEffect(()=>{document.documentElement.lang=zh?"zh-CN":"en";},[zh]);
+ return <><header><div className="brand"><span>EVIDENCE LAB</span> / SYNTHETIC SHOWCASE</div><button aria-label={zh?"Switch to English":"切换中文"} onClick={()=>setLanguage(zh?"en":"zh")}>{zh?"English":"中文"}</button></header><main><div className="eyebrow">{zh?"独立实现 · 全合成数据":"Independent implementation · Synthetic data only"}</div><section className="hero"><div><h1>{zh?"SDV · 病例一致性核查":"SDV · Case consistency"}</h1><p className="lede">{zh?"从提取证据到可复核的规则判断。":"From extracted evidence to reviewable decisions."}</p></div><div className="scope"><strong>{zh?"公开展示范围":"Public scope"}</strong><p>{zh?"本页面只使用完全虚构的示例，展示流程和方法。无真实业务结果、公司源代码、账号、接口调用或文件上传。":"Fabricated examples illustrate workflow and methods. No operational results, company implementation, accounts, API calls or file uploads."}</p></div></section><section className="steps" aria-label={zh?"流程":"Workflow"}><div className="step"><small>01</small>{zh?"\u6765\u6e90\u8bc1\u636e":"Source evidence"}</div><div className="step"><small>02</small>{zh?"\u7ed3\u6784\u5316\u5019\u9009":"Structured candidates"}</div><div className="step"><small>03</small>{zh?"\u786e\u5b9a\u6027\u6838\u67e5":"Deterministic checks"}</div><div className="step"><small>04</small>{zh?"\u4eba\u5de5\u590d\u6838":"Human review"}</div></section><section className="workspace"><Demo language={language}/></section><div className="notice">{zh?"所有屏幕数值、编号、名称和日期均为合成示例。浏览器中的过滤、复核和导出是演示功能，不提供生产权限、真实审核记录或监管结论。":"All displayed counts, identifiers, labels and dates are fabricated. Browser filtering, review and export illustrate interactions; they provide no production authorization, genuine audit trail or regulatory conclusion."}</div><footer><span>SDV · Case consistency · Portfolio methods and workflow</span><a href="https://github.com/Unravelreggie/sdv-consistency-showcase" target="_blank" rel="noreferrer">{zh?"项目源码与说明":"Repository and documentation"} ↗</a></footer></main></>;
+}
+createRoot(document.getElementById("root")!).render(<React.StrictMode><App/></React.StrictMode>);
