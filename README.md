@@ -2,7 +2,26 @@
 
 A synthetic illustration of source-to-record consistency, evidence provenance and manual-review routing. OCR and LLM extraction are represented by fabricated fields; this demo does not call either service.
 
-This public repository contains **independently written demonstration code and entirely fabricated fixtures**. It is not a sanitized copy of a production system. No private Git history, company implementation, operational records, real study results, licensed terminology/templates, screenshots, secrets or infrastructure configuration are included.
+This public repository contains **independently written demonstration code and entirely fabricated fixtures**. It is not a sanitized copy of a production system. No private Git history, company implementation, operational records, real study results, licensed terminology/templates, production screenshots, secrets or infrastructure configuration are included.
+
+## Product preview
+
+**Clinical consistency review workspace** — Keep fabricated source text beside consistency checks and manual-review decisions.
+
+[**Open the interactive prototype →**](https://unravelreggie.github.io/demos/clinical-review/)
+
+[![Clinical consistency review workspace: independently written frontend with fictional data](docs/previews/overview-en.jpg)](https://unravelreggie.github.io/demos/clinical-review/)
+
+Switch scenarios to inspect missing evidence, identity ambiguity and review routing. The prototype runs in the browser with invented fixtures and local state only.
+
+<details>
+<summary>See a second workflow state</summary>
+
+![Clinical consistency review workspace: alternate synthetic workflow state](docs/previews/workflow-en.jpg)
+
+</details>
+
+These are screenshots of this repository's independently written frontend, **not a company system**. Every record, count and output shown is fictional; no real data source or business situation is disclosed. No account or backend connection is required.
 
 ## Run locally
 
@@ -34,4 +53,4 @@ SDV · 病例一致性核查的独立公开演示。所有示例均为重新编�
 
 ## Publication
 
-This repository is a public code showcase. No website hosting, production deployment, public tunnel or external integration is configured. The private operational projects remain separate.
+This repository is a public code and frontend showcase. Its static build is available at the [portfolio prototype](https://unravelreggie.github.io/demos/clinical-review/); there is no backend, production-system connection, public tunnel or external integration. The private operational projects remain separate.
